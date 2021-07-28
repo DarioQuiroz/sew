@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="utf-8">
+
+<head>
+  <meta charset="UTF-8">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <title> Registrar Usuario</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light"> 
+    <div class="container">
+      <a class="navbar-brand" href="/">SEW EURODRIVE</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+        </ul>
+
+        <ul class="navbar-nav">
+          
+        <li class="nav-item"><a class="nav-link" href="ver_usuarios_sew.php">Usuarios</a></li>
+        <li class="nav-item"><a class="nav-link" href='files_id_sew.php'>Ver Archivos</a></li>
+          <li class="nav-item"><a class="nav-link" href="cerrarsesion.php">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="container">
+    <div class="row ">
+      <div class="col-4"></div>
+      <form action="insertarusuario_sew.php" method="post" class="form-signin col-4" onsubmit="return validar_usuario();">
+
+        <h1 class="h3 mb-3 font-weight-normal">Registrar</h1>
+        <input type="text" id="nombre" class="form-control" placeholder="Nombre" required autofocus name="nombre">
+        <input type="text" id="usuario" class="form-control" placeholder="usuario" required name="usuario">
+        <input type="password" id="usuario2" class="form-control" placeholder="Verificar usuario" required name="usuario2">
+        <input type="text" id="inputPassword" class="form-control" placeholder="Contraseña" required name="contraseña">
+        <input type="password" id="inputPassword2" class="form-control" placeholder="Verificar Contraseña" required name="contraseña2">
+        <input type="email" id="Corero" class="form-control" placeholder="Correo" required autofocus name="Correo">
+        <label >Tipo de usuario:</label>
+
+<select name="Tipo" id="Tipo">
+  <option value="1">Empleado</option>
+  <option value="2">Administrador</option>
+
+</select>
+<div class="space-50"></div>
+        <div class="text-center">
+          <p><input type="submit" class="btn btn-lg button-disponibilidad btn-block" value="Registrar" /></p>
+        </div>
+      </form>
+
+
+      <div class="col-4"></div>
+    </div>
+  </section>
+
+  <div class="space-50"></div>
+  <footer style="    height: 120px;" class="footer">
+  
+  </footer>
+  <div class="scrollup">
+    <a href="#"><i class="fa fa-chevron-up"></i></a>
+  </div>
+  <script src="../js/validar.js"></script>
+  <script type="text/javascript" src="../js/jquery/jquery.js"></script>
+
+  <script type="text/javascript" src="../js/script.js"></script>
+
+  <script type="text/javascript" src="../js/bootstrap/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="../js/fancybox/jquery.fancybox.pack.js"></script>
+
+  <script type="text/javascript" src="../js/nivo-lightbox/nivo-lightbox.min.js"></script>
+
+  <script type="text/javascript" src="../js/owl-carousel/owl.carousel.min.js"></script>
+
+  <script type="text/javascript" src="../js/jquery-easing/jquery.easing.1.3.js"></script>
+
+  <script type="text/javascript" src="../js/wow/wow.min.js"></script>
+</body>
+
+</html>
