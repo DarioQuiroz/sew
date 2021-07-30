@@ -98,4 +98,20 @@ function get_todo_fecha($search, $search2){
 }
 
 
+
+
+
+
+function seleccion_documento($search){
+    $images = array();
+    $con = con();
+	$query=$con->query('SELECT * FROM image WHERE src LIKE "%'.$search.'%" ');
+    while($r=$query->fetch_object()){
+        $images[] = $r;
+    }
+    return $images;
+}
+
+
+
 ?>

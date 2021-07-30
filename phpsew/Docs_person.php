@@ -2,13 +2,46 @@
 
     session_start(); 
     include "db.php";
-    $nombre = $_SESSION['comun'];
+  
 
     if(isset($_SESSION['comun'])){
       
 
+
+
 if (empty($_POST['name']))
-$files = get_imgs();
+
+
+{
+$numero=$_GET['num_emple'];
+$buscar;
+ $nombre = $_SESSION['comun'];
+ if ($numero<10) {
+$buscar="_00".$numero."_";
+$files = seleccion_documento($buscar);
+
+
+ } else if ($numero >9 && $numero<100) {
+   $buscar="_0".$numero."_";  
+   $files = seleccion_documento($buscar);
+   
+ 
+ }
+ else  if ($numero >99&& $numero<1000)
+ {
+   $buscar="_".$numero."_";  
+   $files = seleccion_documento($buscar);
+   
+ }
+}
+
+
+
+
+
+
+
+
 
 else
 $files = get_imgs();
@@ -91,7 +124,8 @@ $files = get_imgs();
   <section class="container">
     <div class="col-md-8 "></div>
     <h1>
-          <?php echo 'Bienvenido '.$nombre.' a tu Archivos '; ?>
+          <?php echo 'Bienvenido '.$nombre.' a tu Archivos ';
+         ?>
   </h1>
 
   </section>
@@ -133,13 +167,7 @@ $files = get_imgs();
     <h4>No se encontraron resultados con esta busquedad</h4>
     <?php endif; ?>
   </section>
-  <footer class="footer text-muted bg-light">
-    <div class="container">
-      <span>© 2019 Parque Industrial Queretaro</span>
-      <ul class="list-inline mb-0 float-right">
-      </ul>
-    </div>
-  </footer>
+ 
 </body>
 
 </html>
