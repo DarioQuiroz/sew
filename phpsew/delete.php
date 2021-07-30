@@ -1,5 +1,6 @@
 <?php
 
+
 if(isset($_GET["id"])){
 	include "db.php";
 	$img = get_img($_GET["id"]);
@@ -14,6 +15,7 @@ if(isset($_GET["id"])){
 
 	}
 }
+
 
 
 ?>

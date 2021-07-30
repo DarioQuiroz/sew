@@ -42,12 +42,24 @@ function insert_img($folder, $image){
 function get_imgs(){
 	$images = array();
 	$con = con();
+	$query=$con->query("select * from image order by created_at") or die ("Error al consultar producto".mysqli_error($con)); 
+
+	while($r=$query->fetch_object()){
+		$images[] = $r;
+	}
+	return $images;
+}
+
+function get_imgs_asc(){
+	$images = array();
+	$con = con();
 	$query=$con->query("select * from image order by created_at desc");
 	while($r=$query->fetch_object()){
 		$images[] = $r;
 	}
 	return $images;
 }
+
 
 function get_img($nom){
 	$image = null;
@@ -69,18 +81,6 @@ function del($id){
 
 
 
-
-
-
-function get_venta(){
-	$images = array();
-	$con = con();
-	$query=$con->query("SELECT * FROM tblventas order by id");
-	while($r=$query->fetch_object()){
-		$images[] = $r;
-	}
-	return $images;
-}
 
 
 
@@ -106,6 +106,39 @@ function seleccion_documento($search){
     $images = array();
     $con = con();
 	$query=$con->query('SELECT * FROM image WHERE src LIKE "%'.$search.'%" ');
+    while($r=$query->fetch_object()){
+        $images[] = $r;
+    }
+    return $images;
+}
+
+
+function get_imgs_porid(){
+	$images = array();
+	$con = con();
+	$query=$con->query("select * from image order by id desc");
+	while($r=$query->fetch_object()){
+		$images[] = $r;
+	}
+	return $images;
+}
+
+
+/*consulta generica*/
+function search_genriconombre($search){
+    $images = array();
+    $con = con();
+    $query=$con->query('select * from image where src like "%'.$search.'%"');
+    while($r=$query->fetch_object()){
+        $images[] = $r;
+    }
+    return $images;
+}
+
+function search_genricoid($search){
+    $images = array();
+    $con = con();
+	$query=$con->query('select * from image where id ='.$search.'');
     while($r=$query->fetch_object()){
         $images[] = $r;
     }

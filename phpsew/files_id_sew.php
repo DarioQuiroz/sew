@@ -1,41 +1,33 @@
-<?php 
-
-    session_start(); 
+<?php
+ session_start(); 
  error_reporting();
     $nombre = $_SESSION['admin'];
 
     if(isset($_SESSION['admin'])){
-         include "db.php";
+include "db.php";
 
-if (!empty($_POST['name']))
-{
-  $files =  get_img($_POST['name']);
-}
+if (empty($_POST['name']))
+  $files = get_imgs_porid();
 
-else if (!empty($_POST['feinf']) && empty($_POST['fesu']))
-{
-  
-  $files=get_todo_fecha($_POST['feinf'], $_POST['fesu']);
-  
-}
+ else
+ 
+  $files = search_genriconombre($_POST['name']);
 
-else
+  if (empty($_POST['name1'] && $_POST['name2']))
+  {
+    
+  }
 
-$files = get_imgs();
-
-
-  
-
-  ?>
+ else
+ 
+  $files = get_todo_fecha($_POST['name1'],$_POST['name2']);
 
 
 
+?>
 <html>
 
 <head>
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <title>Subir Multiples Archivos</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -81,10 +73,11 @@ $files = get_imgs();
     }
   </style>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-md navbar-light bg-light"> 
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="/">SEW EURODRIVE</a>
+      <a class="navbar-brand" href="/">Parque Industrial Querétaro</a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -95,45 +88,29 @@ $files = get_imgs();
         </ul>
 
         <ul class="navbar-nav">
-          
-        <li class="nav-item"><a class="nav-link" href="ver_usuarios_sew.php">Usuarios</a></li>
-        <li class="nav-item"><a class="nav-link" href='files_id_sew.php'>Ver Archivos</a></li>
-          <li class="nav-item"><a class="nav-link" href="cerrarsesion.php">Cerrar Sesión</a></li>
+          <li class="nav-item"><a class="nav-link" href="../index.html">INICIO</a></li>
+          <li class="nav-item"><a class="nav-link" href="segundo.html">INTRANET</a></li>
+          <li class="nav-item"><a class="nav-link" href="loguin_facturar.php">CERRAR CESIÓN</a></li>
+
         </ul>
       </div>
     </div>
   </nav>
+
+
+
   <section class="container">
     <div class="col-md-8 "></div>
-    <h1>
-          <?php echo 'Bienvenido '.$nombre.' a los Archivos '; ?>
-  </h1>
+    <h1>Archivos</h1>
 
   </section>
 
 
   <section class="container">
-    <button class="button-disponibilidad"><a href="form_sew.php">Agregar más Archivos</a></button>
+    <button class="button-disponibilidad"><a href="form.php">Agregar más Archivos</a></button>
     <div class="col-4" style="margin-bottom: 3%;"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-3"></div>
-        <div class="col-3"></div>
-        </div>
-      </div>
-    </div>
+  
     <div class="col-4" style="margin-bottom: 3%;"></div>
-
-    <form method="post" class="form-signin col-6">
-    
-    <p> Fecha inferior: <input type="date" name="feinf" class="form-control "min="2017-04-01"  placeholder="Fecha inferior" required></p> 
-      <p>Fecha superior: <input type="date" name="fesu" class="form-control "  max="" placeholder="Fecha superior" required></p>
-
-      <button class="add-to-cart" name="submit1" value="todo" type="submit1" > <em>Buscar</em></button>
-
-    </form>
-
 
 
     <?php if (count($files) > 0) : ?>
@@ -151,27 +128,28 @@ $files = get_imgs();
                   </form>
                 </th>
                 <th scope="col" style="display: table-cell; vertical-align: middle;">
+               
                 <form method="post" class="form-signin col-12">
-                <a href="files_fecha.php" class="btn btn-sm vervacantes btn-block" style="margin-top: 5%; background-color: blue; color: white;"> Ordenar por fecha</a>
-               
-                </form></th>
+                    <input type="date" name="name1" class="form-control" placeholder="fecha inferior" required>
+                    <input type="date" name="name2" class="form-control" placeholder="fecha superior" required>
+                    <div class="space-10"></div>
+                    <button id="VER_FAC" class="btn btn-sm vervacantes btn-block" style="    margin-top: 5%; background-color: blue; color: white;" type="submit" name="submit" value="Submit Form">Buscar archivos</button>
+                  </form>
+                  </th>
                 <th scope="col"></th>
-              
+         
                 <th scope="col" style="display: table-cell; vertical-align: middle;">
-               
+             </th>
+
                 </th>
               </tr>
             </thead>
             <?php foreach ($files as $f) : ?>
               <tr>
+               
                 <td><?php echo $f->src; ?></td>
                 <td><?php echo $f->created_at; ?></td>
-                <td> 
-                  
-                 <i class="fa fa-file-pdf-o"></i></i>
-                
-                
-               <a href="./download.php?id=<?php echo $f->id; ?>">Descargar</a></td>
+                <td><a href="./download.php?id=<?php echo $f->id; ?>">Descargar</a></td>
                 <td><a href="./delete.php?id=<?php echo $f->id; ?>">Eliminar</a></td>
               
               </tr>
@@ -183,12 +161,17 @@ $files = get_imgs();
     <h4>No se encontraron resultados con esta busquedad</h4>
     <?php endif; ?>
   </section>
-
-    
+  <footer class="footer text-muted bg-light">
+    <div class="container">
+      <span>© 2019 Parque Industrial Queretaro</span>
+      <ul class="list-inline mb-0 float-right">
+      </ul>
+    </div>
+  </footer>
 </body>
-</html>
 
-  <?php 
+</html>
+<?php 
 } else{
 
   
@@ -202,18 +185,5 @@ window.location.href='../index.php';
 }
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
