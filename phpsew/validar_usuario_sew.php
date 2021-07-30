@@ -17,7 +17,7 @@ error_reporting();
     $row = $resultado->fetch_assoc();
 
     $nombre_usuario=$row['nombre'];
- 
+ $numero_empleado=$row['num_emple'];
 
     if($row['usuario'] == $usuario && $row['clave'] == $password && $row['tipo'] ==1){
   
@@ -27,7 +27,7 @@ error_reporting();
 
   else  if($row['usuario'] == $usuario && $row['clave'] == $password && $row['tipo'] ==0){
       $_SESSION['comun'] = $nombre_usuario;
-      header("location:Docs_person.php");
+      header("location:Docs_person.php?num_emple=$numero_empleado");
        
     }
 

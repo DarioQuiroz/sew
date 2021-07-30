@@ -1,22 +1,35 @@
 <?php 
 
     session_start(); 
- 
+ error_reporting();
     $nombre = $_SESSION['admin'];
 
     if(isset($_SESSION['admin'])){
          include "db.php";
 
-if (empty($_POST['name']))
-$files = get_imgs();
+if (!empty($_POST['name']))
+{
+  $files =  get_img($_POST['name']);
+}
+
+else if (!empty($_POST['feinf']) && empty($_POST['fesu']))
+{
+  
+  $files=get_todo_fecha($_POST['feinf'], $_POST['fesu']);
+  
+}
 
 else
+
 $files = get_imgs();
 
 
+  
+
+  ?>
 
 
-?>
+
 <html>
 
 <head>
@@ -111,6 +124,16 @@ $files = get_imgs();
       </div>
     </div>
     <div class="col-4" style="margin-bottom: 3%;"></div>
+
+    <form method="post" class="form-signin col-6">
+    
+    <p> Fecha inferior: <input type="date" name="feinf" class="form-control "min="2017-04-01"  placeholder="Fecha inferior" required></p> 
+      <p>Fecha superior: <input type="date" name="fesu" class="form-control "  max="" placeholder="Fecha superior" required></p>
+
+      <button class="add-to-cart" name="submit1" value="todo" type="submit1" > <em>Buscar</em></button>
+
+    </form>
+
 
 
     <?php if (count($files) > 0) : ?>

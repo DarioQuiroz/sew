@@ -153,7 +153,7 @@ if (empty($_POST['name3']))
                 <td><?php echo $f->clave; ?></td>
 
              
-                <td><a href="edit_usuarios_sew.php?rfc=<?php echo $f->id; ?>">Modificar</a></td>
+                <td><a href="edit_usuarios_sew.php?id=<?php echo $f->id; ?>">Modificar</a></td>
     <td>              <?php  
   echo "<a class='text-danger' data-confirm='Esta acción no se puede revertir' rel='nofollow' data-method='delete' href='eliminar_usuario_sew.php?id=".$f->id."''>"?>Borrar Usuario</a> </th>
     </td>

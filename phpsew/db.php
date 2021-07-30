@@ -31,7 +31,7 @@ function get_usuarios(){
 
 
 function con(){
-	return new mysqli("localhost","agrosead_multi_upload","multi_upload","agrosead_multi_upload");
+	return new mysqli("localhost","root","","multi_upload");
 }
 
 function insert_img($folder, $image){
@@ -49,10 +49,10 @@ function get_imgs(){
 	return $images;
 }
 
-function get_img($id){
+function get_img($nom){
 	$image = null;
 	$con = con();
-	$query=$con->query("select * from image where id=$id");
+	$query=$con->query("select * from image where src=$nom");
 	while($r=$query->fetch_object()){
 		$image = $r;
 	}
@@ -63,5 +63,39 @@ function del($id){
 	$con = con();
 	$con->query("delete from image where id=$id");
 }
+
+
+
+
+
+
+
+
+
+function get_venta(){
+	$images = array();
+	$con = con();
+	$query=$con->query("SELECT * FROM tblventas order by id");
+	while($r=$query->fetch_object()){
+		$images[] = $r;
+	}
+	return $images;
+}
+
+
+
+function get_todo_fecha($search, $search2){
+	$images = array();
+	$con = con();
+
+
+	$query=$con->query('SELECT * FROM `image` WHERE created_at BETWEEN "'.$search.'" AND "'.$search2.'"  ');
+	
+	while($r=$query->fetch_object()){
+		$images[] = $r;
+	}
+	return $images;
+}
+
 
 ?>

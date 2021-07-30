@@ -1,15 +1,13 @@
 <?php 
 
-?><?php require_once "scripts.php"; ?>
+?><?php require_once "scripts.php"; 
 
-<?php
 session_start();
-  $consulta=consultarprod();
-  function consultarprod()
+  $consulta=consultarprod($_GET['id']);
+  function consultarprod( $no_id)
   {
 
-    $conn = new mysqli("localhost", "root", "", "multi_upload");
-
+  
     if (mysqli_connect_errno()) {
     die("No se puede conectar a la base de datos:" . mysqli_connect_error());
     }else{
@@ -18,8 +16,10 @@ session_start();
     }
 
 
-
-   $sentencia="SELECT * FROM usuarios";
+    include "db.php";
+    include "conexion.php";
+    
+   $sentencia="SELECT * FROM usuarios WHERE id='".$no_id."' ";
    $resultado= $conn->query($sentencia) or die ("Error al consultar producto".mysqli_error($conn)); 
    $fila=$resultado->fetch_assoc();
 
@@ -29,9 +29,25 @@ session_start();
     $fila['usuario'],
     $fila['clave'],
     $fila['correo'],
-    $fila['tipo']
+    $fila['tipo'],
+    $fila['num_emple']
      ];
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,24 +95,37 @@ session_start();
 
 
       <form  action="modif_user.php" accept-charset="UTF-8" method="post">
-<input name="utf8" type="hidden" value="&#x2713;" />
- 
+
 
 
   <div class="form-group">
-										<input type="text" name="nombre" id="nombre" tabindex="3" class="form-control" placeholder="<?php echo $consulta[1] ?>" required>
+  <label for="">Nombre</label>
+  <input type="hidden" name="Id" id="Id" tabindex="3" class="form-control" value="<?php echo $consulta[0] ?>" required>
+
+										<input type="text" name="Nombre" id="Nombre" tabindex="3" class="form-control" value="<?php echo $consulta[1] ?>" required>
 									</div>
 
 							
 									<div class="form-group">
-										<input type="text" name="apellido" id="apellido" tabindex="4" class="form-control" placeholder="<?php echo $consulta[2] ?>" required>
+                    <label for="">Usuario</label>
+										<input type="text" name="Usuario" id="usuario" tabindex="4" class="form-control" value="<?php echo $consulta[2] ?>" required>
 									</div>
 
 							<div class="form-group">
-										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="" value="<?php echo $consulta[3] ?>" required>
+              <label for="">Clave</label>
+										<input type="text" name="Clave" id="Clave" tabindex="1" class="form-control" value="<?php echo $consulta[3] ?>" required>
 									</div>
 									<div class="form-group">
-										<input type="password" name="pass" id="pass" tabindex="2" class="form-control" placeholder="<?php echo $consulta[4] ?>" required>
+                  <label for="">Correo</label>
+										<input type="email" name="Correo" id="Correo" tabindex="2" class="form-control" value="<?php echo $consulta[4] ?>" >
+									</div>
+                  <div class="form-group">
+                  <label for="">Tipo</label>
+                  <label for=""><?php echo $consulta[5] ?></label>
+									</div>
+                  <div class="form-group">
+                  <label for="">Número de Control</label>
+										<input type="number" name="No_control" id="No_control" tabindex="2" class="form-control" value="<?php echo $consulta[6] ?>" required>
 									</div>
 								
 									
