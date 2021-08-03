@@ -5,6 +5,7 @@ if(isset($_GET["id"])){
 	include "db.php";
 	$img = get_img($_GET["id"]);
 	if($img!=null){
+		print "<ul><li><a href='./form.php'>Agregar mas</a></li>";
 		del($img->id);
 		unlink($img->folder.$img->src);
 		print "<h4>Eliminada Exitosamente!</h4>";

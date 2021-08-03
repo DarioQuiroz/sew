@@ -5,6 +5,9 @@
 * Autor: evilnapsis
 **/
 
+function con(){
+	return new mysqli("localhost","root","","multi_upload");
+}
 
 function search_usuarios($search){
     $images = array();
@@ -28,11 +31,6 @@ function get_usuarios(){
 	return $images;
 }
 
-
-
-function con(){
-	return new mysqli("localhost","root","","multi_upload");
-}
 
 function insert_img($folder, $image){
 	$con = con();

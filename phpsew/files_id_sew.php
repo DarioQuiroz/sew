@@ -75,9 +75,9 @@ if (empty($_POST['name']))
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light"> 
     <div class="container">
-      <a class="navbar-brand" href="/">Parque Industrial Querétaro</a>
+      <a class="navbar-brand" href="/">SEW EURODRIVE</a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -88,10 +88,10 @@ if (empty($_POST['name']))
         </ul>
 
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="../index.html">INICIO</a></li>
-          <li class="nav-item"><a class="nav-link" href="segundo.html">INTRANET</a></li>
-          <li class="nav-item"><a class="nav-link" href="loguin_facturar.php">CERRAR CESIÓN</a></li>
-
+          
+        <li class="nav-item"><a class="nav-link" href="ver_usuarios_sew.php">Usuarios</a></li>
+        <li class="nav-item"><a class="nav-link" href='files_id_sew.php'>Ver Archivos</a></li>
+          <li class="nav-item"><a class="nav-link" href="cerrarsesion.php">Cerrar Sesión</a></li>
         </ul>
       </div>
     </div>
@@ -107,7 +107,7 @@ if (empty($_POST['name']))
 
 
   <section class="container">
-    <button class="button-disponibilidad"><a href="form.php">Agregar más Archivos</a></button>
+    <button class="button-disponibilidad"><a href="for_SEWm.php">Agregar más Archivos</a></button>
     <div class="col-4" style="margin-bottom: 3%;"></div>
   
     <div class="col-4" style="margin-bottom: 3%;"></div>
