@@ -1,5 +1,6 @@
-<?php
- session_start(); 
+<?php 
+
+   session_start(); 
  error_reporting();
     $nombre = $_SESSION['admin'];
 
@@ -24,11 +25,15 @@ if (empty($_POST['name']))
 
 
 
+
 ?>
 <html>
 
 <head>
 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
   <title>Subir Multiples Archivos</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -73,9 +78,8 @@ if (empty($_POST['name']))
     }
   </style>
 </head>
-
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light"> 
+  <nav class="navbar navbar-expand-md navbar-light bg-light"> 
     <div class="container">
       <a class="navbar-brand" href="/">SEW EURODRIVE</a>
 
@@ -96,20 +100,19 @@ if (empty($_POST['name']))
       </div>
     </div>
   </nav>
-
-
-
   <section class="container">
     <div class="col-md-8 "></div>
-    <h1>Archivos</h1>
+    <h1>
+          <?php echo 'Bienvenido '.$nombre.' a los Archivos '; ?>
+  </h1>
 
   </section>
 
 
   <section class="container">
-    <button class="button-disponibilidad"><a href="for_SEWm.php">Agregar más Archivos</a></button>
+    <button class="button-disponibilidad"><a href="form_sew.php">Agregar más Archivos</a></button>
     <div class="col-4" style="margin-bottom: 3%;"></div>
-  
+    
     <div class="col-4" style="margin-bottom: 3%;"></div>
 
 
@@ -128,28 +131,29 @@ if (empty($_POST['name']))
                   </form>
                 </th>
                 <th scope="col" style="display: table-cell; vertical-align: middle;">
-               
-                <form method="post" class="form-signin col-12">
+                 <form method="post" class="form-signin col-12">
                     <input type="date" name="name1" class="form-control" placeholder="fecha inferior" required>
                     <input type="date" name="name2" class="form-control" placeholder="fecha superior" required>
                     <div class="space-10"></div>
                     <button id="VER_FAC" class="btn btn-sm vervacantes btn-block" style="    margin-top: 5%; background-color: blue; color: white;" type="submit" name="submit" value="Submit Form">Buscar archivos</button>
-                  </form>
-                  </th>
+                  </form></th>
                 <th scope="col"></th>
-         
+              
                 <th scope="col" style="display: table-cell; vertical-align: middle;">
-             </th>
-
+               
                 </th>
               </tr>
             </thead>
             <?php foreach ($files as $f) : ?>
               <tr>
-               
                 <td><?php echo $f->src; ?></td>
                 <td><?php echo $f->created_at; ?></td>
-                <td><a href="./download.php?id=<?php echo $f->id; ?>">Descargar</a></td>
+                <td> 
+                  
+                 <i class="fa fa-file-pdf-o"></i></i>
+                
+                
+               <a href="./download.php?id=<?php echo $f->id; ?>">Descargar</a></td>
                 <td><a href="./delete.php?id=<?php echo $f->id; ?>">Eliminar</a></td>
               
               </tr>
@@ -161,18 +165,13 @@ if (empty($_POST['name']))
     <h4>No se encontraron resultados con esta busquedad</h4>
     <?php endif; ?>
   </section>
-  <footer class="footer text-muted bg-light">
-    <div class="container">
-      <span>© 2019 Parque Industrial Queretaro</span>
-      <ul class="list-inline mb-0 float-right">
-      </ul>
-    </div>
-  </footer>
-</body>
 
+    
+</body>
 </html>
-<?php 
-} else{
+
+  <?php 
+}else{
 
   
   ?>
@@ -185,5 +184,18 @@ window.location.href='../index.php';
 }
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

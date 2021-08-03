@@ -26,7 +26,6 @@ foreach ($files as $file) {
     if ($handle->processed) {
     	// usamos la funcion insert_img de la libreria db.php
     	insert_img("uploads/",$handle->file_dst_name);
-    
       header("location:files_id_sew.php"); 
 
     } else {
@@ -39,12 +38,7 @@ foreach ($files as $file) {
   }
   unset($handle);
 }   
-?>
-<script type="text/javascript">
-alert("¡Favor de verificar los datos!");
-window.location.href='files_id_sew.php';
-</script>
-<?php
+
 if(!$error){
 	print "<h4>Exito!</h4>";
 	print "<ul><li><a href='./form.php'>Agregar mas</a></li>";

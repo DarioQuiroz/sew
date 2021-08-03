@@ -26,7 +26,7 @@ if (empty($_POST['name3']))
 
 <head>
 
-  <title>Editar Usuarios</title>
+  <title>Ventas</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -153,11 +153,10 @@ if (empty($_POST['name3']))
                 <td><?php echo $f->clave; ?></td>
 
              
-                <td><a href="edit_usuarios_sew.php?id=<?php echo $f->id; ?>">Modificar</a></td>
+         <td><a href="edit_usuarios_sew.php?id=<?php echo $f->id; ?>">Modificar</a></td>
     <td>              <?php  
   echo "<a class='text-danger' data-confirm='Esta acción no se puede revertir' rel='nofollow' data-method='delete' href='eliminar_usuario_sew.php?id=".$f->id."''>"?>Borrar Usuario</a> </th>
-    </td>
-               
+    </td>      
               
                
               </tr>
